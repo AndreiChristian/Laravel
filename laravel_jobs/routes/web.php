@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+
+    if (Auth::check()) {
+        dd("The user is logged in");
+    } else {
+        dd("The user not is logged in");
+    }
+
+    return view('welcome', [
+        "value" => 3,
+    ]);
+})->middleware('auth');
+
+
+Route::get('/hello', function () {
+    return "hello";
 });
