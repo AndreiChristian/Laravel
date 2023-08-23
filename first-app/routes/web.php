@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 
@@ -49,7 +48,6 @@ Route::get('download', function () {
 Route::get("/users", function () {
 
     dump(User::find(1));
-
 });
 
 // Route::get("/users/{id}",fu)
