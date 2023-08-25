@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JobApplication;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class JobApplicationController extends Controller
 {
@@ -13,8 +14,9 @@ class JobApplicationController extends Controller
      */
     public function index()
     {
-        dd(JobApplication::all());
-        return view('applications.index');
+        return view('applications.index', [
+            'applications' => JobApplication::all()
+        ]);
     }
 
     /**
@@ -79,13 +81,20 @@ class JobApplicationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+
     public function destroy(JobApplication $jobApplication)
     {
+        // Debugging:
+        Log::info("Attempting to delete JobApplication ID: " . $jobApplication->id);
 
-        $this->authorize('delete', $jobApplication);
+        dd($jobApplication);
 
-        $jobApplication->delete();
+        $result = $jobApplication->delete();
 
-        return redirect(route('application.index'));
+        // Debugging:
+        Log::info("Delete result: " . ($result ? "Success" : "Failed"));
+
+        return redirect(route('applications.index'));
     }
 }

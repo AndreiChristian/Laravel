@@ -17,7 +17,9 @@ class JobApplication extends Model
         return $this->belongsTo(User::class);
     }
 
-
+    protected $casts = [
+        'applied_on' => 'datetime',
+    ];
 
     protected $fillable = [
         'position',
