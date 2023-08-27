@@ -13,7 +13,6 @@
         <span>Book Store</span>
         <span class="flex-1"></span>
         <a href="/publisher">All publishers</a>
-        <a href="/publisher/create">Create new publisher</a>
         <a href="/author">All Authors</a>
         </div>
     </nav>

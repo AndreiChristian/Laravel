@@ -1,5 +1,6 @@
 <x-layout title='home'>
     <h1 class="ml-10">Publisher</h1>
+    <a class="ml-10 underline" href="{{route('publisher.create')}}">Create a new publisher</a>
     @foreach($publishers as $publisher)
     <div class="box-border mx-10 border-solid border-zinc-500 border-2 rounded-md p-4 my-4 flex items-center justify-between gap-4">
         <span>{{$publisher->name}}</span>
