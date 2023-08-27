@@ -39,7 +39,7 @@ class PublisherController extends Controller
 
         Log::debug($publisher);
 
-        return redirect("publisher.index");
+        return redirect("/publisher");
     }
 
     /**
@@ -55,7 +55,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        //
+        return view("publisher.edit", ['publisher' => $publisher]);
     }
 
     /**
@@ -63,7 +63,10 @@ class PublisherController extends Controller
      */
     public function update(Request $request, Publisher $publisher)
     {
-        //
+        $publisher->name = $request->name;
+
+        $publisher->save();
+        return redirect("/publisher");
     }
 
     /**
@@ -71,6 +74,7 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        //
+        $publisher->delete();
+        return back();
     }
 }
