@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublisherController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,4 @@ Route::get('/', function () {
     return view("welcome");
 });
 
-Route::get("/hello", function () {
-    return "hello world";
-});
+Route::resource('publisher',PublisherController::class);

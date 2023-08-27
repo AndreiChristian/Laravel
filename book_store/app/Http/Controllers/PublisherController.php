@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Publisher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PublisherController extends Controller
 {
@@ -12,7 +13,8 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        //
+        $publishers = Publisher::all();
+        return view("publisher.index", ['publishers' => $publishers]);
     }
 
     /**
@@ -20,7 +22,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view("publisher.create");
     }
 
     /**
@@ -28,7 +30,16 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $name = $request->name;
+
+        $publisher = Publisher::create([
+            'name' => $name
+        ]);
+
+        Log::debug($publisher);
+
+        return redirect("publisher.index");
     }
 
     /**
