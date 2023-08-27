@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\PublisherController;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +20,6 @@ Route::get('/', function () {
     return view("welcome");
 });
 
-Route::resource('publisher',PublisherController::class);
+Route::resource('publisher', PublisherController::class);
+
+Route::resource('author', AuthorController::class);
